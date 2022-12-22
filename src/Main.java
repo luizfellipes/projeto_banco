@@ -16,7 +16,15 @@ public class Main {
             int escolha = scanner.nextInt();
             switch (escolha) {
                 case 1: {
-                    serviceCb.abrirConta(null);
+                    System.out.println("Selecione o tipo da conta a ser aberta: \n[1] para CC: \n[2] para CP:");
+                    int selecao = scanner.nextInt();
+                    String t;
+                    if (selecao == 1) {
+                        t = "CC";
+                    } else {
+                        t = "CP";
+                    }
+                    serviceCb.abrirConta(t);
                     break;
                 }
 

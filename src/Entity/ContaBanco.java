@@ -1,4 +1,4 @@
-package Entity.model;
+package Entity;
 
 public class ContaBanco {
     public int numConta;
@@ -13,7 +13,7 @@ public class ContaBanco {
     }
 
     public int getNumConta() {
-        return numConta;
+        return this.numConta;
     }
 
     public void setNumConta(int n) {

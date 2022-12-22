@@ -1,6 +1,6 @@
 package Service;
 
-import Entity.model.ContaBanco;
+import Entity.ContaBanco;
 
 public class ServiceContaBanco {
 
