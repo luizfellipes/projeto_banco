@@ -27,7 +27,7 @@ public class ServiceContaBanco {
         }
     }
 
-    public void depositar(float v) {
+    public void depositar(Float v) {
         if (cb.getStatus(true)) {
             cb.setSaldo(cb.getSaldo() + v);
             System.out.println("Saldo atual: " + cb.getSaldo());
@@ -36,7 +36,7 @@ public class ServiceContaBanco {
         }
     }
 
-    public void sacar(float v) {
+    public void sacar(Float v) {
         if (cb.getStatus(true) && cb.getSaldo() > v) {
             cb.setSaldo(cb.getSaldo() - v);
         } else {

@@ -8,23 +8,44 @@ public class Main {
         ServiceContaBanco serviceCb = new ServiceContaBanco();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("################@ Banco do lalau @################");
-        System.out.print("Selecione a opção para continuar: \n[1]Abrir Conta: \n[2]Fechar Conta: " +
-                "\n[3]Deposito \n[4]Sacar \n[5]Pagar Mensal \nSelecione: ");
-        int escolha = scanner.nextInt();
-        switch (escolha) {
-            case 1: {
-                String t = null;
-                serviceCb.abrirConta(t);
-                break;
+        String continua = "N";
+        while (continua.equals("N")) {
+            System.out.println("################@ Banco do lalau @################");
+            System.out.print("Selecione a opção para continuar: \n[1]Abrir Conta: \n[2]Fechar Conta: " +
+                    "\n[3]Deposito: \n[4]Sacar: \n[5]Pagar Mensal: \n[6]Finalizar Acesso: \nSelecione: ");
+            int escolha = scanner.nextInt();
+            switch (escolha) {
+                case 1: {
+                    serviceCb.abrirConta(null);
+                    break;
+                }
+
+                case 2: {
+                    serviceCb.fecharConta();
+                    break;
+                }
+
+                case 3: {
+                    serviceCb.depositar(null);
+                    break;
+                }
+
+                case 4: {
+                    serviceCb.sacar(null);
+                    break;
+                }
+
+                case 5: {
+                    serviceCb.pagarMensal();
+                    break;
+                }
+                default: {
+                    System.out.println("Deseja realmente finalizar o acesso? \nSeus dados serão perdidos! [S/N]");
+                    continua = scanner.next();
+                    System.err.println("Programa Finalizado com sucesso !");
+                }
+
             }
-
-            case 2: {
-                serviceCb.fecharConta();
-                break;
-            }
-
-
         }
     }
 }
