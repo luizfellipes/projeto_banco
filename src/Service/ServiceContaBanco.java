@@ -16,7 +16,7 @@ public class ServiceContaBanco {
 
     public void abrirConta(String t) {
         cb.setTipo(t);
-        this.cb.setStatus(true);
+        cb.setStatus(true);
         if (t.equals("CC")) {
             cb.setSaldo(50);
         } else if (t.equals("CP")) {
@@ -58,7 +58,7 @@ public class ServiceContaBanco {
         }
     }
 
-    public void saldo(){
+    public void saldo() {
         System.out.println(cb.getSaldo());
     }
 

@@ -29,7 +29,7 @@ public class ContaBanco {
     }
 
     public String getDono() {
-        return dono;
+        return this.dono;
     }
 
     public void setDono(String d) {
@@ -45,15 +45,10 @@ public class ContaBanco {
     }
 
     public boolean getStatus() {
-        return status;
+        return this.status;
     }
 
     public boolean setStatus(boolean status) {
-        return status;
+        return this.status = status;
     }
 }
-
-
-// Conta corrente: CC + começa com 50 reais, metodo pagarMensal paga 12 reais
-// Conta poupança: CP + ganha 150 reais, metodo pagarMensal paga 20 reais
-// metodo construtor começa com a conta fechada e saldo 0
