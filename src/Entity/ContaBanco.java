@@ -44,7 +44,7 @@ public class ContaBanco {
         this.saldo = s;
     }
 
-    public boolean getStatus(boolean b) {
+    public boolean getStatus() {
         return status;
     }
 
