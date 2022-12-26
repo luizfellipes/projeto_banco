@@ -2,19 +2,20 @@ package Service;
 
 import Entity.ContaBanco;
 
+import java.util.Scanner;
+
 public class ServiceContaBanco {
 
     ContaBanco cb = new ContaBanco();
-
-    public void estadoAtual() {
-        System.out.println("Conta: " + cb.getNumConta());
-        System.out.println("Tipo: " + cb.getTipo());
-        System.out.println("Dono: " + cb.getDono());
-        System.out.println("Saldo: " + cb.getSaldo());
-        System.out.println("Status da Conta: " + cb.getStatus());
-    }
+    Scanner scanner = new Scanner(System.in);
 
     public void abrirConta(String t) {
+        System.out.print("Digite o numero da conta: ");
+        int numConta = scanner.nextInt();
+        cb.setNumConta(numConta);
+        System.out.print("Digite seu nome: ");
+        String nome = scanner.next();
+        cb.setDono(nome);
         cb.setTipo(t);
         cb.setStatus(true);
         if (t.equals("CC")) {
@@ -58,15 +59,11 @@ public class ServiceContaBanco {
         }
     }
 
-    public void saldo() {
-        System.out.println(cb.getSaldo());
-    }
-
     public void pagarMensal() {
         int v = 0;
-        if (cb.getTipo() == "CC") {
+        if (cb.getTipo().equals("CC")) {
             v = 12;
-        } else if (cb.getTipo() == "CP") {
+        } else if (cb.getTipo().equals("CP")) {
             v = 20;
         }
         if (cb.getStatus() && cb.getSaldo() > v) {
@@ -74,6 +71,14 @@ public class ServiceContaBanco {
         } else {
             System.out.println("Impossível pagar");
         }
+    }
+
+    public void estadoAtual() {
+        System.out.println("Conta: " + cb.getNumConta());
+        System.out.println("Tipo: " + cb.getTipo());
+        System.out.println("Dono: " + cb.getDono());
+        System.out.println("Saldo: " + cb.getSaldo());
+        System.out.println("Status da Conta: " + cb.getStatus());
     }
 
 }

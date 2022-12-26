@@ -16,8 +16,8 @@ public class ContaBanco {
         return this.numConta;
     }
 
-    public void setNumConta(int n) {
-        this.numConta = n;
+    public void setNumConta(int numConta) {
+        this.numConta = numConta;
     }
 
     public String getTipo() {
@@ -32,8 +32,8 @@ public class ContaBanco {
         return this.dono;
     }
 
-    public void setDono(String d) {
-        this.dono = d;
+    public void setDono(String dono) {
+        this.dono = dono;
     }
 
     public float getSaldo() {
@@ -48,7 +48,7 @@ public class ContaBanco {
         return this.status;
     }
 
-    public boolean setStatus(boolean status) {
-        return this.status = status;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
