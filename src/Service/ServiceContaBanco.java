@@ -2,6 +2,8 @@ package Service;
 
 import Entity.ContaBanco;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ServiceContaBanco {
@@ -23,21 +25,23 @@ public class ServiceContaBanco {
         } else if (t.equals("CP")) {
             cb.setSaldo(150);
         }
+        List<String> contasDeBanco = new ArrayList<>();
+        contasDeBanco.add(numConta, nome);
         System.out.println("Sua nova conta foi aberta !");
     }
 
     public void fecharConta() {
         if (cb.getSaldo() > 0) {
-            System.out.println("O fechamento dessa conta não pode ser realizado, conta com dinheiro");
+            System.out.println("O fechamento dessa conta não pode ser realizado, conta com saldo disponivel: " + cb.getSaldo());
         } else if (cb.getSaldo() < 0) {
-            System.out.println("O fechamento dessa conta não pode ser realizado, conta com débitos a pagar");
+            System.out.println("O fechamento dessa conta não pode ser realizado, conta com débitos a pagar: " + cb.getSaldo());
         } else {
             cb.setStatus(false);
             System.out.println("Fechamento de conta finalizada !!");
         }
     }
 
-    public void depositar(Float v) {
+    public void depositar(float v) {
         if (cb.getStatus()) {
             cb.setSaldo(cb.getSaldo() + v);
             System.out.println("Deposito realizado com sucesso na conta de: " + cb.getDono() + " Saldo atual: " + cb.getSaldo());
@@ -46,8 +50,10 @@ public class ServiceContaBanco {
         }
     }
 
-    public void sacar(Float v) {
+    public void sacar() {
         if (cb.getStatus()) {
+            System.out.println("Digite o valor desejado do saque: ");
+            float v = scanner.nextFloat();
             if (cb.getSaldo() >= v) {
                 cb.setSaldo(cb.getSaldo() - v);
                 System.out.println("Saque realizado com sucesso na conta de: " + cb.getDono() + " Saldo atual: " + cb.getSaldo());
@@ -69,7 +75,7 @@ public class ServiceContaBanco {
         if (cb.getStatus() && cb.getSaldo() > v) {
             cb.setSaldo(cb.getSaldo() - v);
         } else {
-            System.out.println("Impossível pagar");
+            System.out.println("Impossível pagar, conta sem saldo !");
         }
     }
 

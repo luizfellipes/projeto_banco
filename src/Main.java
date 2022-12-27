@@ -10,7 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         String continua = "N";
-        while (continua.equals("N")) {
+        while (continua.equalsIgnoreCase("N")) {
             System.out.println("################@ Banco do lalau @################");
             System.out.print("""
                     Selecione a opção para continuar:\s
@@ -25,8 +25,6 @@ public class Main {
             int escolha = scanner.nextInt();
             switch (escolha) {
                 case 1 -> {
-
-
                     System.out.println("Selecione o tipo da conta a ser aberta: \n[1] para CC: \n[2] para CP:");
                     int selecao = scanner.nextInt();
                     String t;
@@ -47,9 +45,7 @@ public class Main {
                     serviceCb.depositar(v);
                 }
                 case 4 -> {
-                    System.out.println("Digite o valor desejado do saque: ");
-                    float v = scanner.nextFloat();
-                    serviceCb.sacar(v);
+                    serviceCb.sacar();
                 }
                 case 5 -> {
                     serviceCb.estadoAtual();
@@ -58,9 +54,13 @@ public class Main {
                     serviceCb.pagarMensal();
                 }
                 default -> {
-                    System.out.println("Deseja realmente finalizar o acesso? \nSeus dados serão perdidos! [S/N]");
-                    continua = scanner.next();
-                    System.err.println("Programa Finalizado com sucesso !");
+                    if (escolha == 7) {
+                        System.out.println("Deseja realmente finalizar o acesso? \nSeus dados serão perdidos! [S/N]");
+                        continua = scanner.next();
+                        if (continua.equalsIgnoreCase("S")) {
+                            System.err.println("Programa Finalizado com sucesso !");
+                        }
+                    }
                 }
             }
         }
