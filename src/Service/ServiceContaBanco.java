@@ -1,6 +1,7 @@
 package Service;
 
 import Entity.ContaBanco;
+import Entity.Pessoa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +10,37 @@ import java.util.Scanner;
 public class ServiceContaBanco {
 
     ContaBanco cb = new ContaBanco();
+    Pessoa pessoa = new Pessoa();
     Scanner scanner = new Scanner(System.in);
+    private List<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+
+    public void cadastro() {
+        System.out.println("Digite seu nome: ");
+        String nome = scanner.next();
+        pessoa.setNome(nome);
+        System.out.println("Digite seu Telefone: ");
+        int telefone = scanner.nextInt();
+        pessoa.setTelefone(telefone);
+        System.out.println("Digite seu cpf: ");
+        String cpf = scanner.next();
+        pessoa.setCpf(cpf);
+        int id = 0;
+        if (listaPessoa == null) {
+            id++;
+            pessoa.setId(id);
+        } else {
+                if (id >= 1) {
+                    id++;
+                    pessoa.setId(id);
+                }
+            }
+            listaPessoa.add(pessoa);
+        }
+
+
 
     public void abrirConta(String t) {
-        System.out.print("Digite o numero da conta: ");
-        int numConta = scanner.nextInt();
-        cb.setNumConta(numConta);
-        System.out.print("Digite seu nome: ");
-        String nome = scanner.next();
-        cb.setDono(nome);
+        cadastro();
         cb.setTipo(t);
         cb.setStatus(true);
         if (t.equals("CC")) {
@@ -25,8 +48,6 @@ public class ServiceContaBanco {
         } else if (t.equals("CP")) {
             cb.setSaldo(150);
         }
-        List<String> contasDeBanco = new ArrayList<>();
-        contasDeBanco.add(numConta, nome);
         System.out.println("Sua nova conta foi aberta !");
     }
 
@@ -44,7 +65,7 @@ public class ServiceContaBanco {
     public void depositar(float v) {
         if (cb.getStatus()) {
             cb.setSaldo(cb.getSaldo() + v);
-            System.out.println("Deposito realizado com sucesso na conta de: " + cb.getDono() + " Saldo atual: " + cb.getSaldo());
+            System.out.println("Deposito realizado com sucesso na conta de: " + /*listaPessoa.getNome() + */" Saldo atual: " + cb.getSaldo());
         } else {
             System.out.println("Impossível depositar");
         }
@@ -56,7 +77,7 @@ public class ServiceContaBanco {
             float v = scanner.nextFloat();
             if (cb.getSaldo() >= v) {
                 cb.setSaldo(cb.getSaldo() - v);
-                System.out.println("Saque realizado com sucesso na conta de: " + cb.getDono() + " Saldo atual: " + cb.getSaldo());
+                System.out.println("Saque realizado com sucesso na conta de: " + /* cb.getDono() + */ " Saldo atual: " + cb.getSaldo());
             } else {
                 System.out.println("Saldo insuficiente para realização de saque");
             }
@@ -80,11 +101,7 @@ public class ServiceContaBanco {
     }
 
     public void estadoAtual() {
-        System.out.println("Conta: " + cb.getNumConta());
-        System.out.println("Tipo: " + cb.getTipo());
-        System.out.println("Dono: " + cb.getDono());
-        System.out.println("Saldo: " + cb.getSaldo());
-        System.out.println("Status da Conta: " + cb.getStatus());
+        System.out.println("ID: "+ pessoa.getId() +"\nnome: " + pessoa.getNome() + "\nTelefone: " + pessoa.getTelefone() + "\nCpf: " + pessoa.getCpf() + "\nSaldo: " + cb.getSaldo() + "\nStatus da Conta: " + cb.getStatus());
     }
 
 }

@@ -3,7 +3,6 @@ package Entity;
 public class ContaBanco {
     public int numConta;
     protected String tipo;
-    private String dono;
     private float saldo;
     private boolean status;
 
@@ -26,14 +25,6 @@ public class ContaBanco {
 
     public void setTipo(String t) {
         this.tipo = t;
-    }
-
-    public String getDono() {
-        return this.dono;
-    }
-
-    public void setDono(String dono) {
-        this.dono = dono;
     }
 
     public float getSaldo() {
